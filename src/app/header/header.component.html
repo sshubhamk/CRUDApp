@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"> <img src="assets/icons/logo.svg"></a>
+            </div>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active">
+                    <img src="assets/icons/ico_dashboard.svg">
+                    Dashboard </a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/users']" routerLinkActive="active" >
+                    <img src="assets/icons/ico_users.svg">
+                    Users </a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/session-manager']" routerLinkActive="active">
+                    <img src="assets/icons/ico_sessionmanager.svg">
+                    Session Manager </a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="assets/icons/ico_notification.svg">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="assets/icons/ico_user.svg">
+                    John Smith
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="assets/icons/ico_downarrow.svg">
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,128 @@
+<app-header></app-header>
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="assets/icons/ico_users.svg">
+        Users</a>
+    <form class="form-inline">
+        <div class="fake-input">
+            <input type="text" placeholder="Search" (input)="dt.filterGlobal($event.target.value, 'contains')">
+            <img src="assets/icons/ico_search.svg">
+        </div>
+        &nbsp;&nbsp;
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addUserModal"
+            (click)="ResetForm()">
+            <img src="assets/icons/ico_add.svg"> Add User
+        </button>
+    </form>
+</nav>
+
+<div style="text-align: center;" *ngIf="isSuccess" class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    <strong> Success!</strong>
+</div>
+
+<p-table #dt [value]="employees" class="table" [globalFilterFields]="['name','status']">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th>Email </th>
+            <th>Role Type </th>
+            <th>Status </th>
+            <th>Actions</th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-employee>
+        <tr>
+            <td>{{employee.name}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.roletype}}</td>
+            <td>
+                <img src="assets/icons/ico_active.svg" *ngIf="employee.status == 'Active'">
+                <img src="assets/icons/ico_inactive.svg" *ngIf="employee.status == 'Inactive'">
+                <img src="assets/icons/ico_pending.svg" *ngIf="employee.status == 'Pending'"> &nbsp;
+                {{employee.status}}
+            </td>
+            <td>
+                <a href="#" data-toggle="modal" data-target="#addUserModal" (click)="modify(employee.id)">
+                    <img src="assets/icons/ico_edit.svg">
+                </a> &nbsp;&nbsp;&nbsp;
+                <a data-toggle="modal" (click)="assignID(employee.id)" data-target="#deleteUserModal"><i
+                        class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name" name="name"
+                            [(ngModel)]="objEmployee.name">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email" name="email"
+                            [(ngModel)]="objEmployee.email">
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="roletype1" name="roletype" class="custom-control-input"
+                            [(ngModel)]="objEmployee.roletype" value="Admin">
+                        <label class="custom-control-label" for="roletype1">Admin </label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="roletype2" name="roletype" class="custom-control-input"
+                            [(ngModel)]="objEmployee.roletype" value="Customer Executive">
+                        <label class="custom-control-label" for="roletype2">Customer Executive</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Mobile Number (Optional)"
+                            name="mobilenumber" [(ngModel)]="objEmployee.mobilenumber">
+                    </div>
+
+                    <div class="form-group">
+                        <button *ngIf="objEmployee.id == 0" type="button" class="btn btn-warning btn-lg btn-block"
+                            data-dismiss="modal" (click)="addUser()">ADD
+                            USER</button>
+                        <button type="button" *ngIf="objEmployee.id != 0" class="btn btn-warning btn-lg btn-block"
+                            data-dismiss="modal" (click)="modifyUser()">Modify
+                            USER</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete the user?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-warning" (click)="deleteUser(userID)" data-dismiss="modal">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
