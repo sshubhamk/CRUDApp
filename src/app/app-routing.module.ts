@@ -8,7 +8,8 @@ const routes: Routes = [
   {
     path: '*',
     redirectTo: 'users',
-    pathMatch: 'full' },
+    pathMatch: 'full',
+  },
   {
     path: 'users',
     component: UsersComponent,
@@ -20,7 +21,7 @@ const routes: Routes = [
   {
     path: 'session-manager',
     component: SesssionManagerComponent,
-  }
+  },
 ];
 
 @NgModule({

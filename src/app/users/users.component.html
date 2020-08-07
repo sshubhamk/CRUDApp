@@ -94,11 +94,9 @@
 
                     <div class="form-group">
                         <button *ngIf="objEmployee.id == 0" type="button" class="btn btn-warning btn-lg btn-block"
-                            data-dismiss="modal" (click)="addUser()">ADD
-                            USER</button>
+                            data-dismiss="modal" (click)="addUser()">ADD USER</button>
                         <button type="button" *ngIf="objEmployee.id != 0" class="btn btn-warning btn-lg btn-block"
-                            data-dismiss="modal" (click)="modifyUser()">Modify
-                            USER</button>
+                            data-dismiss="modal" (click)="modifyUser()">Modify USER</button>
                     </div>
                 </form>
             </div>
@@ -121,7 +119,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-warning" (click)="deleteUser(userID)" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-warning" (click)="deleteUser(userID)"
+                    data-dismiss="modal">Yes</button>
             </div>
         </div>
     </div>

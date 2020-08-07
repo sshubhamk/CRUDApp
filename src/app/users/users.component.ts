@@ -7,7 +7,6 @@ import { Employee } from '../employee';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
-
 export class UsersComponent implements OnInit {
   employees: any = [];
   objEmployee = new Employee();
@@ -34,7 +33,6 @@ export class UsersComponent implements OnInit {
   // tslint:disable-next-line: typedef
   modify(id: number) {
     this.objEmployee = this.employees.filter((e) => e.id === id)[0];
-    console.log(this.objEmployee);
   }
 
   // tslint:disable-next-line: typedef
@@ -52,15 +50,9 @@ export class UsersComponent implements OnInit {
     );
   }
 
+  // tslint:disable-next-line: typedef
   assignID(id: number) {
     this.userID = id;
-  }
-
-  // tslint:disable-next-line: typedef
-  sortColumn() {
-    this.objEmployeeArray = [];
-    this.objEmployeeArray = this.employees;
-    console.log(this.objEmployeeArray);
   }
 
   // tslint:disable-next-line: typedef

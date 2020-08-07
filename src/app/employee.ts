@@ -6,7 +6,7 @@ export class Employee {
   roletype: string;
   status: string;
 
-  constructor(){
+  constructor() {
     this.roletype = '';
     this.id = 0;
   }

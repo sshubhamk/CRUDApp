@@ -9,7 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { SesssionManagerComponent } from './sesssion-manager/sesssion-manager.component';
 import { HeaderComponent } from './header/header.component';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,13 @@ import {TableModule} from 'primeng/table';
     SesssionManagerComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, TableModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    TableModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
